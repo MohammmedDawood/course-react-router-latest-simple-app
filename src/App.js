@@ -1,26 +1,35 @@
-import { Route, Switch } from 'react-router-dom';
+import { Navigate, Route, Routes } from "react-router-dom";
 
-import Welcome from './pages/Welcome';
-import Products from './pages/Products';
-import ProductDetail from './pages/ProductDetail';
-import MainHeader from './components/MainHeader';
+import Welcome from "./pages/Welcome";
+import Products from "./pages/Products";
+import ProductDetail from "./pages/ProductDetail";
+import MainHeader from "./components/MainHeader";
 
 function App() {
   return (
     <div>
       <MainHeader />
       <main>
-        <Switch>
-          <Route path='/welcome'>
+        <Routes>
+          {/* V6 */}
+          <Route path="/" element={<Navigate to="/welcome" />} />
+          <Route path="/welcome/*" element={<Welcome />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/products/:productId" element={<ProductDetail />} />
+          {/* V5 */}
+          {/* <Route path="/">
+            <Redirect to="/welcome" />
+          </Route> */}
+          {/* <Route path="/welcome">
             <Welcome />
-          </Route>
-          <Route path='/products' exact>
+          </Route> */}
+          {/* <Route path="/products" exact>
             <Products />
-          </Route>
-          <Route path='/products/:productId'>
+          </Route> */}
+          {/* <Route path="/products/:productId">
             <ProductDetail />
-          </Route>
-        </Switch>
+          </Route> */}
+        </Routes>
       </main>
     </div>
   );
