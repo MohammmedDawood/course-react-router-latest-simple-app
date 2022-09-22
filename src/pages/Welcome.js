@@ -1,4 +1,4 @@
-import { Link, Route, Routes } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom"; //, Route, Routes
 
 const Welcome = () => {
   return (
@@ -6,9 +6,10 @@ const Welcome = () => {
       <h1>The Welcome Page</h1>
       {/* V6 */}
       <Link to="new-user">New User</Link>
-      <Routes>
+      <Outlet />
+      {/* <Routes>
         <Route path="new-user" element={<p>Welcome, new user!</p>} />
-      </Routes>
+      </Routes> */}
 
       {/* V5 */}
       {/* <Route path="/welcome/new-user">
